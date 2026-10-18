@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Special Surprise for Manaal Amer 💖</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- Non-stop Floating Balloons -->
+  <div id="balloon-container"></div>
+
+  <!-- Background Music -->
+  <audio id="bg-music" src="music/song.mp3" loop></audio>
+
+  <!-- STAGE 1: PASSCODE LOCK -->
+  <div class="screen active" id="stage-lock">
+    <div class="glass-card">
+      <div class="emoji-icon">🔒</div>
+      <h2>Top Secret Access</h2>
+      <p class="subtitle">Only the Birthday Queen is allowed to enter!</p>
+      <div class="input-box">
+        <input type="password" id="passcode-input" placeholder="Enter 4-digit code" maxlength="4">
+      </div>
+      <button class="btn primary-btn" onclick="checkLock()">Unlock Surprise ✨</button>
+      <p id="lock-error" class="error-msg"></p>
+    </div>
+  </div>
+
+  <!-- STAGE 2: ARE YOU READY? -->
+  <div class="screen" id="stage-ready">
+    <div class="glass-card">
+      <div class="emoji-icon">🎁</div>
+      <h2>Hey Manaal Amer!</h2>
+      <p class="subtitle">There is a little surprise waiting just for you... Are you ready?</p>
+      <div class="btn-group">
+        <button class="btn yes-btn" onclick="goToStage(3)">YES! I'm Ready 😍</button>
+        <button class="btn no-btn" id="no-button" onmouseover="dodgeNo()" onclick="rejectNo()">No 😒</button>
+      </div>
+      <p id="funny-alert" class="funny-msg"></p>
+    </div>
+  </div>
+
+  <!-- STAGE 3: THE FIRST WISH & BALLOONS -->
+  <div class="screen" id="stage-wish">
+    <div class="glass-card">
+      <div class="photo-wrapper">
+        <img src="images/photo1.jpg" alt="Manaal Amer" class="rounded-photo">
+        <div class="crown">👑</div>
+      </div>
+      <h1 class="sparkle-title">Happy Birthday, Manaal Amer! 🎉</h1>
+      <p class="wish-paragraph">
+        To my favorite human in the whole world, thank you for being the sunshine on my cloudiest days and my partner in every crazy adventure. Today is all about YOU! ✨
+      </p>
+      <button class="btn primary-btn pulse" onclick="goToStage(4)">Walk Down Memory Lane 📸 ➔</button>
+    </div>
+  </div>
+
+  <!-- STAGE 4: MEMORY GALLERY SLIDER -->
+  <div class="screen" id="stage-gallery">
+    <div class="glass-card wide-card">
+      <span class="step-indicator" id="memory-counter">Memory 1 of 3</span>
+      <div class="gallery-photo-container">
+        <img id="gallery-img" src="images/photo2.jpg" alt="Memory">
+      </div>
+      <p id="gallery-caption" class="caption-text">Every memory with you is a treasure that brings a big smile to my face!</p>
+      <button class="btn primary-btn" id="gallery-next-btn" onclick="nextMemory()">Next Memory ➔</button>
+    </div>
+  </div>
+
+  <!-- STAGE 5: THE BIRTHDAY CAKE -->
+  <div class="screen" id="stage-cake">
+    <div class="glass-card">
+      <h2>Make a Wish & Blow the Candle! 🕯️</h2>
+      <p class="subtitle">Close your eyes, make the sweetest wish, and tap the candle!</p>
+      
+      <div class="cake-container" onclick="blowCandle()">
+        <div class="candle">
+          <div class="flame" id="flame"></div>
+        </div>
+        <div class="cake-tier tier-top"></div>
+        <div class="cake-tier tier-middle"></div>
+        <div class="cake-tier tier-bottom"></div>
+      </div>
+
+      <button class="btn primary-btn" id="blow-btn" onclick="blowCandle()">🎂 Blow The Candle</button>
+      <button class="btn secondary-btn hidden" id="final-btn" onclick="goToStage(6)">One Last Note For You 💌</button>
+    </div>
+  </div>
+
+  <!-- STAGE 6: FINAL BEST FRIEND LETTER -->
+  <div class="screen" id="stage-letter">
+    <div class="glass-card letter-card">
+      <div class="emoji-icon">💌</div>
+      <h2 class="letter-title">Dear Manaal Amer,</h2>
+      <div class="letter-body">
+        <p>I feel so endlessly blessed to call you my best friend. Thank you for the endless laughter, the midnight talks, the unmatchable bond, and for always being my biggest cheerleader.</p>
+        <p>I pray that this new chapter brings you boundless happiness, peace, success, and everything your beautiful heart desires. Keep shining like the diamond you are! 💖</p>
+        <p class="signature">Forever & always your best friend 🌸</p>
+      </div>
+      <button class="btn primary-btn" id="celebrate-btn" onclick="handleCelebrateAgain()">Celebrate All Over Again! 🎊</button>
+    </div>
+  </div>
+
+  <!-- STAGE 7: GRAND FINALE & THANK YOU -->
+  <div class="screen" id="stage-thankyou">
+    <div class="glass-card">
+      <div class="emoji-icon">👑💖🎂✨</div>
+      <h1 class="grand-title">Happy Birthday Manaal Amer!</h1>
+      <h2 class="bestie-sub">My Bestie Forever & Always! 👭💫</h2>
+      <p class="wish-paragraph">
+        Hope this little surprise made you smile as much as you make everyone else smile! Love you to the moon and back! 💕
+      </p>
+      <button class="btn thank-btn pulse" onclick="closeWebsite()">Thank You! 💖</button>
+      <p id="exit-msg" class="exit-msg hidden">Bye Bye Queen! Hope you had the best time! 🌸👋</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
